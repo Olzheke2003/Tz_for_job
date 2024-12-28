@@ -11,7 +11,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('auth/', include('djoser.urls')),
-    path('api/admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls.authtoken')),
 ]
 

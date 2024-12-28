@@ -18,14 +18,22 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class TestSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Test
+        fields = ['title']
+
+
+class TestDetailSerializer(serializers.ModelSerializer):
     questions = QuestionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Test
-        fields = ['title', 'description', 'questions']
+        fields = ['title', 'questions']
 
 
 class UserTestResultSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = UserTestResult
         fields = ['user', 'test', 'score', 'completed_at']

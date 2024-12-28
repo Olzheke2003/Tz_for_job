@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from .models import Test, UserTestResult
-from .serializers import TestSerializer, UserTestResultSerializer
+from .serializers import TestSerializer, UserTestResultSerializer, TestDetailSerializer
 
 
 class TestListView(ListAPIView):
@@ -13,7 +13,7 @@ class TestListView(ListAPIView):
 
 class TestDetailView(RetrieveAPIView):
     queryset = Test.objects.all()
-    serializer_class = TestSerializer
+    serializer_class = TestDetailSerializer
 
 
 class SubmitTestView(APIView):
