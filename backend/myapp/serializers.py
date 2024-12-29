@@ -21,7 +21,7 @@ class TestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Test
-        fields = ['title']
+        fields = ['id', 'title']
 
 
 class TestDetailSerializer(serializers.ModelSerializer):
@@ -36,4 +36,4 @@ class UserTestResultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserTestResult
-        fields = ['user', 'test', 'score', 'completed_at']
+        fields = ['id', 'user', 'test', 'score', 'completed_at']

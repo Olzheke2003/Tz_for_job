@@ -1,5 +1,11 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+
+
+class CustomUser(AbstractUser):
+    # Добавьте свои поля, если нужно
+    photo = models.ImageField(upload_to='user_photos/', blank=True, null=True)
 
 
 class Test(models.Model):
