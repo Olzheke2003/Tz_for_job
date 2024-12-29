@@ -22,11 +22,24 @@ class SubmitTestView(APIView):
     def post(self, request, test_id):
         test = Test.objects.get(id=test_id)
         score = 0
-        for question in test.questions.all():
-            selected_answer_id = request.data.get(str(question.id))
-            if selected_answer_id:
-                answer = question.answers.get(id=selected_answer_id)
-                if answer.is_correct:
-                    score += 1
+
+        # Ожидаем данные в формате [{"question": "4", "answer": "1"}, ...]
+        submitted_answers = request.data.get("answers", [])
+        for answer_data in submitted_answers:
+            question_id = answer_data.get("question")
+            selected_answer_id = answer_data.get("answer")
+
+            if question_id and selected_answer_id:
+                try:
+                    question = test.questions.get(id=question_id)
+                    answer = question.answers.get(id=selected_answer_id)
+                    if answer.is_correct:
+                        score += 1
+                except Exception as e:
+                    # Игнорируем ошибки в случае некорректных ID
+                    print(f"Error processing question {question_id} with answer {selected_answer_id}: {e}")
+
+        # Сохраняем результат
         result = UserTestResult.objects.create(user=request.user, test=test, score=score)
         return Response({"test_id": test_id, "score": score})
+

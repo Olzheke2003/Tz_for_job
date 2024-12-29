@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ACBDBA;
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  text-align: center;
+  width: 20vw;
+}
+.form-block{
+  display: flex;
+  flex-direction: column;
+}
+.form-input {
+  height: 3vh;
+  background-color: #2E2F2F;
+  color: #CDDDDD;
+}
+
+.form-label{
+  font-size: 1.5rem;
+  color: #051014;
+}
+.form-btn {
+  width: 100%;
+  background-color: #2E2F2F;
+  color: #CDDDDD;
+  font-size: 1rem;
+}
+.not-found {
+  font-size: 10vw;
+}
