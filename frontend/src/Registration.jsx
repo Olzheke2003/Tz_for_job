@@ -11,11 +11,19 @@ const Registration = () => {
     event.preventDefault(); // Prevent page reload on form submission
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/users/", {
-        email: email,
-        username: username,
-        password: password,
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/auth/users/",
+        {
+          email: email,
+          username: username,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       // Handle successful registration
       if (response.status === 201) {
