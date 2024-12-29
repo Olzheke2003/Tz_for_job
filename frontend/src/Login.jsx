@@ -11,7 +11,7 @@ const Login = () => {
     event.preventDefault(); // Prevent page reload on form submission
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/token/login", {
+      const response = await axios.post("http://127.0.0.1:8000/auth/token/login/", {
         username: idValue,
         password: pwValue,
       });
