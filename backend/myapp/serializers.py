@@ -6,7 +6,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        fields = ['text', 'is_correct']
+        fields = ['id', 'text', 'is_correct']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ['text', 'answers']
+        fields = ['id', 'text', 'answers']
 
 
 class TestSerializer(serializers.ModelSerializer):
@@ -29,7 +29,7 @@ class TestDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Test
-        fields = ['title', 'questions']
+        fields = ['id', 'title', 'questions']
 
 
 class UserTestResultSerializer(serializers.ModelSerializer):
